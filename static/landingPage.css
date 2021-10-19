@@ -1,3 +1,24 @@
 body {
-    background-color: lightblue;
+    background-image: url("landing.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
+#main h1{
+  color: white;
+  font-size: 4vw;
+}
+#intro{
+
+}
+#main{
+  width: 100vw;
+  height: 100vh;
+  margin-left: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+#upload{
+  margin-top: 3vw;
+  font-size: 1.5vw;
+}
