@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 body {
     background-image: url("landing.jpg");
     background-size: cover;
@@ -6,6 +7,7 @@ body {
 #main h1{
   color: white;
   font-size: 4vw;
+  font-family: 'Noto Serif', serif;
 }
 #intro{
 

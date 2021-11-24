@@ -7,16 +7,15 @@ from database import Database
 # phoneNumber = resumeParser.phoneNumberParser()
 
 dataBase = Database()
-dataBase.insert({
-    "name": "Ripan",
-    "email": "email",
-    "phoneNumber": "559754982",
-    "aboutMe": "I am Ripan",
-    "education": "San Jose State",
-    "projects": "Easyy Link",
-    "skills": "c++",
-    "experience": "Spotlyt"
-})
-dataBase.getUser(3)
-
-
+# dataBase.insert({
+#     "name": "Ripan",
+#     "email": "email",
+#     "phoneNumber": "559754982",
+#     "aboutMe": "I am Ripan",
+#     "education": "San Jose State",
+#     "projects": "Easyy Link",
+#     "skills": "c++",
+#     "experience": "Spotlyt"
+# })
+userList = dataBase.getUser(6)
+print(userList[0][3])

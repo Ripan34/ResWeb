@@ -8,10 +8,12 @@ class Database:
     #insert data
     def insert(self, data):
         self.__c.execute("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (None, data["name"], data["email"], data["phoneNumber"],
-        data["aboutMe"], data["education"], data["projects"], data["skills"], data["experience"]))
+        data["title"], data["education"], data["projects"], data["skills"], data["experience"]))
+        self.__conn.commit()
+        return self.__c.lastrowid
 
     #get data
     def getUser(self, user_id):
-        self.__c.execute(f"SELECT * FROM user WHERE user_id={user_id}")
+        self.__c.execute("SELECT * FROM user WHERE user_id=:user_id", {"user_id": user_id})
         results = self.__c.fetchall() 
-        print(results)
+        return results

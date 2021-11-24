@@ -12,7 +12,7 @@ SQL_CreateTable = '''CREATE TABLE IF NOT EXISTS user (
              name TEXT NOT NULL,
              email TEXT NOT NULL,
              phoneNumber TEXT NOT NULL,
-             aboutMe TEXT NOT NULL,
+             title TEXT NOT NULL,
              education TEXT NOT NULL,
              projects TEXT NOT NULL,
              skills TEXT NOT NULL,

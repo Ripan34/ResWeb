@@ -15,26 +15,33 @@
   </head>
   <body>
     <section id="section1">
-    <h1>Ripandeep Singh</h1>
-    <h3>Software Engineer</h3>
+    <h1>{{data.name}}</h1>
+    <h3>{{data.title}}</h3>
     <div id="aboutme">
-    <h4>About me</h4>
+    <h4>Education</h4>
       <p>
-        I am this this this....  I am this this this....
-        I am this this this....  I am this this this....
+        {{data.education}}
       </p>
     </div>
 </section>
+
 <section id="section2">
-  <h1>Ripandeep Singh</h1>
-  <h3>Software Engineer</h3>
-  <div id="aboutme">
-  <h4>About me</h4>
-    <p>
-      I am this this this....  I am this this this....
-      I am this this this....  I am this this this....
-    </p>
+  <div id="buttons">
+  <button id="prj" onclick="myHandler(this.id)" type="button" class="btn btn-secondary">Projects</button>
+  <button id="exp" onclick="myHandler(this.id)" type="button" class="btn btn-secondary">Experience</button>
+  <button id="skl" onclick="myHandler(this.id)" type="button" class="btn btn-secondary">Skills</button>
   </div>
+<div id="projects">
+<p>{{data.projects}}<p>
+</div>
+
+<div style="display: none;" id="experience">
+  <p>{{data.experience}}<p>
+  </div>
+
+  <div style="display: none;" id="skills">
+    <p>{{data.skills}}<p>>
+    </div>
 </section>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
@@ -42,5 +49,35 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script>
+      function myHandler(id){
+        if(id == "exp"){
+          let x = document.getElementById("experience");
+          let y = document.getElementById("skills");
+          let z = document.getElementById("projects");
+          z.style.display = "none";
+          y.style.display = "none";
+          x.style.display = "block";
+
+        }
+        if(id == "skl"){
+          let x = document.getElementById("skills");
+          let y = document.getElementById("experience");
+          let z = document.getElementById("projects");
+          z.style.display = "none";
+          y.style.display = "none";
+          x.style.display = "block";
+        }
+        if(id == "prj"){
+          let x = document.getElementById("projects");
+          let y = document.getElementById("experience");
+          let z = document.getElementById("skills");
+          z.style.display = "none";
+          y.style.display = "none";
+          x.style.display = "block";
+
+        }
+      }
+    </script>
   </body>
 </html>
