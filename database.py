@@ -7,8 +7,8 @@ class Database:
     
     #insert data
     def insert(self, data):
-        self.__c.execute("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (None, data["name"], data["email"], data["phoneNumber"],
-        data["title"], data["education"], data["projects"], data["skills"], data["experience"]))
+        self.__c.execute("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (None, data["name"], data["email"], data["phoneNumber"],
+        data["title"], data["education"], data["projects"], data["skills"], data["experience"], data["fileName"]))
         self.__conn.commit()
         return self.__c.lastrowid
 

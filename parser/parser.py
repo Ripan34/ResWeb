@@ -28,7 +28,7 @@ class Parser:
             return result
         else:
             newResStr = self.__resume_string.replace("\n", " ")
-            pattern2 = re.compile(r'(EDUCATION.*|Education.*)(SKILLS & HONOR|SKILLS AND TECHNOLOGIES|Skills|PROJECTS|Projects|EXPERIENCE|SKILLS|Experience| )')
+            pattern2 = re.compile(r'(EDUCATION.*|Education.*)(SKILLS & HONOR|SKILLS AND TECHNOLOGIES|Skills|PROJECTS|Projects|EXPERIENCE|SKILLS|Experience)')
             match2 = re.findall(pattern2, newResStr)
             result2 = ""
             if match2:
@@ -40,7 +40,7 @@ class Parser:
     #parser projects
     def projectsParser(self):
         newResStr = self.__resume_string.replace("\n", " ")
-        pattern = re.compile(r'(PROJECTS.*|Projects.*)(SKILLS & HONOR|Skills|Education|Experience| )')
+        pattern = re.compile(r'(PROJECTS.*|Projects.*)(SKILLS & HONOR|Skills|Education|Experience)')
         match = re.findall(pattern, newResStr)
         result = ""
         if match:
@@ -52,7 +52,7 @@ class Parser:
     #parser for experience
     def experienceParser(self):
         newResStr = self.__resume_string.replace("\n", " ")
-        pattern = re.compile(r'(EXPERIENCE.*|Experience.*|Work|WORK)(SKILLS & HONOR|Skills|Education|Projects|PROJECTS| )')
+        pattern = re.compile(r'(EXPERIENCE.*|Experience.*)(Projects|PROJECTS|Skills|Education)')
         match = re.findall(pattern, newResStr)
         result = ""
         if match:

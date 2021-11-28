@@ -16,7 +16,8 @@ SQL_CreateTable = '''CREATE TABLE IF NOT EXISTS user (
              education TEXT NOT NULL,
              projects TEXT NOT NULL,
              skills TEXT NOT NULL,
-             experience TEXT NOT NULL
+             experience TEXT NOT NULL,
+             fileName TEXT NOT NULL
              )'''
              
 c.execute(SQL_CreateTable)

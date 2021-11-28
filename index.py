@@ -45,7 +45,6 @@ def upload_res():
 
 @app.route("/adduser",  methods=['POST'])
 def load_user():
-    print("hello")
     data = {
         "email": request.form['email'],
         "name": request.form['name'],
@@ -54,10 +53,11 @@ def load_user():
         "education": request.form['education'],
         "skills": request.form['skills'],
         "projects": request.form['projects'],
-        "experience": request.form['experience']
+        "experience": request.form['experience'],
+        "fileName": request.form["fileName"]
     }
     id = addToDatabase(data)
-    return redirect(f"user/{id}")
+    return render_template("confirmation.html", id=id)
 
 #user portfolio
 @app.route("/user/<id>")
@@ -65,6 +65,7 @@ def showUser(id):
     dataBase = Database()
     userList = dataBase.getUser(id)
     data = {
+        "id": userList[0][0],
         "name": userList[0][1],
         "email": userList[0][2],
         "phoneNumber": userList[0][3],
@@ -72,10 +73,21 @@ def showUser(id):
         "education": userList[0][5],
         "projects": userList[0][6],
         "skills": userList[0][7],
-        "experience": userList[0][8]
+        "experience": userList[0][8],
     }
     return render_template("/portfolio_templates/default_template.html", data=data)
 
+#show resume
+@app.route("/user/resume/<id>")
+def showResume(id):
+    dataBase = Database()
+    userList = dataBase.getUser(id)
+    return render_template("/portfolio_templates/showResume.html", fileName=userList[0][9])
+
+#about us
+@app.route("/aboutus")
+def aboutUs():
+    return render_template("aboutUs.html")
 #add to database
 def addToDatabase(data):
     dataBase = Database()
