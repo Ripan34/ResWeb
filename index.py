@@ -1,22 +1,25 @@
+from parser.parser import Parser #Parser class
+from flask import Flask, request, render_template
+from werkzeug.utils import secure_filename #to store file uploaded by a user
+from database import Database #Database class to store users
 import os
-from parser.parser import Parser
-from flask import Flask, request, redirect, url_for, render_template
-from werkzeug.utils import secure_filename
-from database import Database
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'static/uploads' #to config folder to save uploaded resumes
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+#home route
 @app.route("/")
 def landing(name=None):
     return render_template("landingPage.html", name=name);
     #return render_template("/portfolio_templates/default_template.html", name=name);
 
+#edit resume fields route
 @app.route("/fill")
 def fill(name=None):
     return render_template("fillResume.html", name=name);
-    
+
+ #POST route for final resume fields   
 @app.route("/resume", methods=['POST'])
 def upload_res():
     email = request.form['email']
@@ -43,6 +46,7 @@ def upload_res():
     }
     return render_template("fillResume.html", data=data)
 
+#add user route
 @app.route("/adduser",  methods=['POST'])
 def load_user():
     data = {
@@ -75,7 +79,8 @@ def showUser(id):
         "skills": userList[0][7],
         "experience": userList[0][8],
     }
-    return render_template("/portfolio_templates/default_template.html", data=data)
+    skills = userList[0][7].split(',')
+    return render_template("/portfolio_templates/default_template.html", data=data, skills=skills)
 
 #show resume
 @app.route("/user/resume/<id>")
@@ -88,6 +93,7 @@ def showResume(id):
 @app.route("/aboutus")
 def aboutUs():
     return render_template("aboutUs.html")
+
 #add to database
 def addToDatabase(data):
     dataBase = Database()

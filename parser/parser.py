@@ -1,12 +1,12 @@
-import re
-from pdfminer.high_level import extract_text
+#Parser class to read a pdf file and parse resume fields
+import re #reg ex
+from pdfminer.high_level import extract_text #to extract text from resume
 
 class Parser:
     
     #constructor: takes a path to resume file
     def __init__(self, fileName):
         self.__resume_string = extract_text(f'./static/uploads/{fileName}')
-        #self.__resume_string = extract_text('../static/uploads/RipandeepSinghResumeCurrent_1.pdf')
 
     #parse phone number from file
     def phoneNumberParser(self):
@@ -40,7 +40,7 @@ class Parser:
     #parser projects
     def projectsParser(self):
         newResStr = self.__resume_string.replace("\n", " ")
-        pattern = re.compile(r'(PROJECTS.*|Projects.*)(SKILLS & HONOR|Skills|Education|Experience)')
+        pattern = re.compile(r'(PROJECTS.*|Projects.*)(SKILLS & HONOR|Skills|Education|Experience|EXPERIENCE)')
         match = re.findall(pattern, newResStr)
         result = ""
         if match:
@@ -52,7 +52,7 @@ class Parser:
     #parser for experience
     def experienceParser(self):
         newResStr = self.__resume_string.replace("\n", " ")
-        pattern = re.compile(r'(EXPERIENCE.*|Experience.*)(Projects|PROJECTS|Skills|Education)')
+        pattern = re.compile(r'(EXPERIENCE.*|Experience.*|Work.*)(PROJECTS|Projects|Skills|SKILLS & HONOR|SKILLS|Education|EDUCATION)')
         match = re.findall(pattern, newResStr)
         result = ""
         if match:
@@ -76,6 +76,3 @@ class Parser:
                 skills_string = skills_string + ele + ", "
         
         return skills_string
-    
-#parser = Parser("RipandeepSinghResumeCurrent_1.pdf")
-#print(parser.projectsParser())

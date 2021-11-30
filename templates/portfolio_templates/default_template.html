@@ -19,18 +19,18 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <div id="nv">
-            <li style="color: aliceblue; font-size: 1.3vw;" class="nav-item active">
+            <li style="color: aliceblue; font-size: 1.5vw;" class="nav-item active">
               {{data.name}}
             </li>
           <li class="nav-item active">
-            <a style="color: aliceblue; font-size: 1.3vw;" class="nav-link" href="/user/resume/{{data.id}}">Resume</a>
+            <a style="color: aliceblue; font-size: 1.5vw; text-decoration: underline;" class="nav-link" href="/user/resume/{{data.id}}">Resume</a>
           </li>
         </div>
         </ul>
       </div>
     </nav>
     <section id="section1">
-    <h1>{{data.name}}</h1>
+    <h1><strong>{{data.name}}</strong></h1>
     <h3>{{data.title}}</h3>
     <div id="aboutme">
     <h4>Education</h4>
@@ -38,6 +38,9 @@
         {{data.education}}
       </p>
     </div>
+    <h4 style="margin-top: 1vw;">Contact me:</h4>
+    <small>{{data.phoneNumber}}</small>
+    <small>{{data.email}}</small>
 </section>
 
 <section id="section2">
@@ -47,7 +50,7 @@
   <button id="skl" onclick="myHandler(this.id)" type="button" class="btn btn-secondary">Skills</button>
   </div>
 <div id="projects">
-<p>{{data.projects}}<p>
+<p>{{data.projects}}</p>
 </div>
 
 <div style="display: none;" id="experience">
@@ -55,8 +58,10 @@
   </div>
 
   <div style="display: none;" id="skills">
-    <p>{{data.skills}}<p>>
-    </div>
+    {% for skill in skills %}
+        <li id="sk">{{skill}}</li>
+    {% endfor %}
+  </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
